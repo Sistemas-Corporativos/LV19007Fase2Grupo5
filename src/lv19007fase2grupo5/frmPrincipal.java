@@ -315,16 +315,39 @@ public class frmPrincipal extends javax.swing.JFrame {
                         aplicaTitular = false;
                         JOptionPane.showMessageDialog( null, "No se puede alinear mas de un portero" );
                     }else{
-                        aplicaTitular = true;                        
-                        lblPortero.setText(jugador.nombre);
+                        aplicaTitular = true;                                                
                         porteros ++;                        
                     }
                     break;
                 case "Defensa":
+                    //Verificar la cantidad
+                    if(defensas>= maxDefensas){
+                        aplicaTitular = false;
+                        JOptionPane.showMessageDialog( null, "No se puede alinear mas de 4 Defensas" );
+                    }else{
+                        aplicaTitular = true;                                                
+                        defensas ++;                        
+                    }
                     break;
                 case "Volante":
+                    //Verificar la cantidad
+                    if(volantes>= maxVolantes){
+                        aplicaTitular = false;
+                        JOptionPane.showMessageDialog( null, "No se puede alinear mas de 4 Volantes" );
+                    }else{
+                        aplicaTitular = true;                                                
+                        volantes ++;                        
+                    }
                     break;
                 case "Delantero":
+                    //Verificar la cantidad
+                    if(delanteros>= maxDelanteros){
+                        aplicaTitular = false;
+                        JOptionPane.showMessageDialog( null, "No se puede alinear mas de 2 Delanteros" );
+                    }else{
+                        aplicaTitular = true;                                                
+                        delanteros ++;                        
+                    }
                     break;
             }
             if(aplicaTitular){
