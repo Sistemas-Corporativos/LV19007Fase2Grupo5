@@ -56,26 +56,26 @@ public class ListaJugadores {
                 }
         }
     }
-    //Borrar y extraer un jugador de la lista
+    //Extraer un jugador de la lista
     public Jugador extraer (int pos) {  //Debe recibir la posicion del nodo a extraer
         //Verificamos que la posicion exista en la lista
         if (pos <= cantidad ())    {
             Jugador jugador;//El jugador que extraeremos
             if (pos == 1) {
                 jugador = raiz.jugador;
-                raiz = raiz.sig;
-                if (raiz!=null)
-                    raiz.ant=null;
+                //raiz = raiz.sig;
+                //if (raiz!=null)
+                    //raiz.ant=null;
             } else {
                 Nodo reco;
                 reco = raiz;
                 for (int f = 1 ; f <= pos - 2 ; f++)
                     reco = reco.sig;
                 Nodo prox = reco.sig;
-                reco.sig = prox.sig;
-                Nodo siguiente=prox.sig;
-                if (siguiente!=null)
-                    siguiente.ant=reco;
+                //reco.sig = prox.sig;
+                //Nodo siguiente=prox.sig;
+                //if (siguiente!=null)
+                    //siguiente.ant=reco;
                 jugador = prox.jugador;
             }
             return jugador;
