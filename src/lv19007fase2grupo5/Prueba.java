@@ -16,8 +16,8 @@ public class Prueba {
         jugador.numero=1;
         jugador.nombre = "Jose Ramos";
         jugador.posicion= Posicion.delantero;
-        lg.insertar (1, jugador);
-        
+        lg.insertar (1, jugador);        
+                
         lg.imprimir ();        
     }
 }

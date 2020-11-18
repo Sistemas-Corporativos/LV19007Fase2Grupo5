@@ -10,8 +10,8 @@ package lv19007fase2grupo5;
  * @author RONALDMO
  */
 public class Posicion {    
-    private static String portero = "Portero";
-    private static String defensa = "Defensa";
+    public static String portero = "Portero";
+    public static String defensa = "Defensa";
     public static String volante = "Volante";
     public static String delantero = "Delantero";    
 }

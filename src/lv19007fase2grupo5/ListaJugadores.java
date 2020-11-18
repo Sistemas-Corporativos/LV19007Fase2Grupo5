@@ -5,6 +5,8 @@
  */
 package lv19007fase2grupo5;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author RONALDMO
@@ -154,6 +156,23 @@ public class ListaJugadores {
             reco = reco.sig;
         }
         System.out.println();
+    }    
+    //Obtener la tabla de jugadores de la lista.
+    public DefaultTableModel getTblJugadores(){        
+        Nodo reco = raiz;
+        String[] columnas = new String [] {"Numero", "Nombre", "Posicion"};
+        DefaultTableModel tableModel = new DefaultTableModel(columnas,0);
+        //Recorremos la lista        
+        while (reco != null) {
+            Object[] datos = new Object[] {
+                reco.jugador.numero,
+                reco.jugador.nombre,
+                reco.jugador.posicion
+            };
+            tableModel.addRow(datos);
+            reco = reco.sig;
+        }        
+        return tableModel;
     }    
 }
 
