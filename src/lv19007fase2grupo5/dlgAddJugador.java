@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author RONALDMO
  */
 public class dlgAddJugador extends javax.swing.JDialog {
-
+    public ListaJugadores plantilla;
     /**
      * Creates new form dlgAddJugador
      */
@@ -136,6 +136,12 @@ public class dlgAddJugador extends javax.swing.JDialog {
         String cadenaToBd= spnNumero.getValue().toString() + "-" +txtNombre.getText()+"-"+cbxPosicion.getSelectedItem().toString();
         BD bd = new BD();
         bd.guardarEnBD(cadenaToBd);
+        //Add to List
+        Jugador jugador = new Jugador();
+        jugador.numero = Integer.parseInt(spnNumero.getValue().toString());
+        jugador.nombre = txtNombre.getText();
+        jugador.posicion = cbxPosicion.getSelectedItem().toString();
+        plantilla.insertar(1, jugador);
         limpiar();
         JOptionPane.showMessageDialog( null, "Almacenado" );
     }//GEN-LAST:event_btnGuardarActionPerformed

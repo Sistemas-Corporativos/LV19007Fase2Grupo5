@@ -64,6 +64,10 @@ public class BD {
         String nombFichNuev=ficheroAntiguo.getParent()+"/auxiliar"+String.valueOf(Math.abs(numaleatorio.nextInt()))+".txt";
         /*Crea un objeto File para el fichero nuevo*/
         File ficheroNuevo=new File(nombFichNuev);
+        if(ficheroNuevo.exists()){ //Si existe lo eliminamos y volvemos a crear
+            BorrarFichero(ficheroNuevo);
+            ficheroNuevo=new File(nombFichNuev);
+        }
         try {
             /*Si existe el fichero inical*/
             if(ficheroAntiguo.exists()){

@@ -4,3 +4,6 @@
 5-Portero 28-Portero
 3-Defensa 3-Defensa
 5-Michel Ric-Delantero
+10-Leo Mesi-Delantero
+11-ansu fati-Delantero
+20-Portero 20-Portero
