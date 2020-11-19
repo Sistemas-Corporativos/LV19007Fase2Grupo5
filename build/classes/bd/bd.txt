@@ -1,0 +1,6 @@
+1-Jugador desde BD-Volante
+2-Portero TO BD-Portero
+28-Portero 28-Portero
+5-Portero 28-Portero
+3-Defensa 3-Defensa
+5-Michel Ric-Delantero
