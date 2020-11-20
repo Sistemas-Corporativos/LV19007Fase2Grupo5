@@ -59,8 +59,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnAddPlayer = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        mnuAgregarJugador = new javax.swing.JMenuItem();
+        mnuEliminarJugador = new javax.swing.JMenuItem();
+        mnuResetAlineacion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -102,6 +103,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fpavatar.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         lblPortero.setText("...");
 
@@ -259,21 +265,29 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Acciones");
 
-        jMenuItem1.setText("Agregar Jugador");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mnuAgregarJugador.setText("Agregar Jugador");
+        mnuAgregarJugador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mnuAgregarJugadorActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(mnuAgregarJugador);
 
-        jMenuItem2.setText("Eliminar Jugador");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        mnuEliminarJugador.setText("Eliminar Jugador");
+        mnuEliminarJugador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                mnuEliminarJugadorActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(mnuEliminarJugador);
+
+        mnuResetAlineacion.setText("Resetear Alineacion");
+        mnuResetAlineacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuResetAlineacionActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnuResetAlineacion);
 
         jMenuBar1.add(jMenu1);
 
@@ -447,15 +461,15 @@ public class frmPrincipal extends javax.swing.JFrame {
         fillTblPlantilla();     
     }//GEN-LAST:event_formWindowOpened
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mnuAgregarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAgregarJugadorActionPerformed
         dlgAddJugador frm = new dlgAddJugador(this,true);
         frm.plantilla = plantilla;
         frm.setVisible(true);
         //loadJugadoresFromBD();
         fillTblPlantilla();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mnuAgregarJugadorActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void mnuEliminarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEliminarJugadorActionPerformed
         if (tblPlantilla.getSelectedRowCount()>0) {
             int pos = tblPlantilla.getSelectedRow()+1;//Indice de tabla 0, Posicion en Lista 1 (Sumar 1 al indice de tabla)
             //eliminar de la base de datos
@@ -470,7 +484,37 @@ public class frmPrincipal extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog( null, "Seleccione un jugador de la tabla !!!" );
         }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_mnuEliminarJugadorActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void mnuResetAlineacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuResetAlineacionActionPerformed
+        //Resetear los labels de los jugadores
+        lblPortero.setText("...");
+        lblDefensa_1.setText("...");
+        lblDefensa_2.setText("...");
+        lblDefensa_3.setText("...");
+        lblDefensa_4.setText("...");
+        lblVolante_1.setText("...");
+        lblVolante_2.setText("...");
+        lblVolante_3.setText("...");
+        lblVolante_4.setText("...");
+        lblDelantero_1.setText("...");
+        lblDelantero_2.setText("...");
+        //Resetear la cantidades alineada a defecto
+        porteros=0;
+        defensas=0;
+        volantes=0;
+        delanteros=0;  
+        //Vaciar las listas
+        plantilla.vaciar();
+        equipoTitular.vaciar();
+        //Volver a recargar desde la BD
+        loadJugadoresFromBD();
+        fillTblPlantilla();
+    }//GEN-LAST:event_mnuResetAlineacionActionPerformed
     private void loadJugadoresFromBD(){
         BD bd = new BD();
         bd.leerDesdeFichero(plantilla);
@@ -600,8 +644,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDefensa_1;
@@ -615,6 +657,9 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblVolante_2;
     private javax.swing.JLabel lblVolante_3;
     private javax.swing.JLabel lblVolante_4;
+    private javax.swing.JMenuItem mnuAgregarJugador;
+    private javax.swing.JMenuItem mnuEliminarJugador;
+    private javax.swing.JMenuItem mnuResetAlineacion;
     private javax.swing.JTable tblPlantilla;
     // End of variables declaration//GEN-END:variables
 }

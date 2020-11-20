@@ -22,6 +22,9 @@ public class ListaJugadores {
     public ListaJugadores () {
         raiz = null; //Al instanciar la clase el nodo raiz sera null
     }
+    public void vaciar(){
+        raiz = null;
+    }
     //Insertar un elemento en la posicion indicada
     public void insertar (int pos, Jugador jugador)
     {
